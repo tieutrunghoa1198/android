@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="#EFEFEF" android:paddingLeft="16dp" android:paddingRight="16dp"
+        android:paddingBottom="16dp">
+    <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#FFFFFF" android:layout_marginBottom="120dp"
+                android:padding="24dp">
+            <TextView
+                    android:text="WELCOME BACK"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/tvHeader"
+                    android:textSize="22dp"
+                    android:letterSpacing="0.3"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal" android:fontFamily="@font/futura"
+                    android:layout_marginBottom="30dp" android:layout_marginTop="24dp"/>
+            <TextView
+                    android:text="Sign in again with your email address to continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView5"
+                    android:gravity="center_horizontal" android:fontFamily="@font/futura"
+                    android:layout_marginBottom="30dp"/>
+            <TextView
+                    android:text="EMAIL ADDRESS"
+                    android:textSize="15sp"
+                    android:letterSpacing="0.2"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView6"
+                    android:fontFamily="@font/futura"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:background="@drawable/textview_border"
+                    android:padding="10dp"
+                    android:id="@+id/editTextTextEmailAddress" android:hint="Your email"
+                    android:layout_marginBottom="24dp" android:minHeight="48dp"/>
+            <TextView
+                    android:layout_marginBottom="5dp"
+                    android:text="PASSWORD"
+                    android:textSize="15sp"
+                    android:letterSpacing="0.2"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/futura"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView7"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/textview_border"
+                    android:id="@+id/editTextTextPassword" android:hint="Enter your password"
+                    android:layout_marginBottom="24dp" android:minHeight="48dp"/>
+            <Button
+                    android:text="Sign In"
+                    android:textColor="#FFFFFF"
+                    android:letterSpacing="0.2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnSignIn"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:background="#000000"
+                    android:fontFamily="@font/futura"/>
+            <TextView
+                    android:text="Forgot password?"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView8" android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp" android:gravity="center_horizontal"/>
+            <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+            />
+            <TextView
+                    android:text="NOT YOU?"
+                    android:layout_width="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/futura"
+                    android:layout_height="wrap_content" android:id="@+id/textView9"
+                    android:gravity="center_horizontal" android:layout_marginTop="12dp"/>
+            <TextView
+                    android:text="@string/sign_into_a_different_account_or_create_a_new_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/tvRegister"
+                    android:gravity="center_horizontal" android:layout_marginBottom="24dp"
+                    android:layout_marginTop="16dp"/>
+        </LinearLayout>
+        <TextView
+                android:text="Privacy Policy | Terms and Conditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView11"
+                android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+</LinearLayout>
