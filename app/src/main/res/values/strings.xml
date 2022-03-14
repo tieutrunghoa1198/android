@@ -13,6 +13,7 @@
     <string name="sign_into_a_different_account_or_create_a_new_one">Sign into a different account or create a new one
     </string>
     <string-array name="days">
+        <item>DD</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -46,6 +47,7 @@
         <item>31</item>
     </string-array>
     <string-array name="months">
+        <item>Month</item>
         <item>January</item>
         <item>February</item>
         <item>March</item>
@@ -58,5 +60,39 @@
         <item>October</item>
         <item>November</item>
         <item>December</item>
+    </string-array>
+    <string-array name="years">
+        <item>YYYY</item>
+        <item>1980</item>
+        <item>1981</item>
+        <item>1982</item>
+        <item>1983</item>
+        <item>1984</item>
+        <item>1985</item>
+        <item>1986</item>
+        <item>1987</item>
+        <item>1988</item>
+        <item>1989</item>
+        <item>1990</item>
+        <item>1991</item>
+        <item>1992</item>
+        <item>1993</item>
+        <item>1994</item>
+        <item>1995</item>
+        <item>1996</item>
+        <item>1997</item>
+        <item>1998</item>
+        <item>1999</item>
+        <item>2000</item>
+        <item>2001</item>
+        <item>2002</item>
+        <item>2003</item>
+        <item>2004</item>
+        <item>2005</item>
+        <item>2006</item>
+        <item>2007</item>
+        <item>2008</item>
+        <item>2008</item>
+        <item>2010</item>
     </string-array>
 </resources>

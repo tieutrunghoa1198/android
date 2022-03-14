@@ -14,10 +14,11 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         Spinner spinner = (Spinner) findViewById(R.id.spinnerDays);
         Spinner spinnerMonths = (Spinner) findViewById(R.id.spinnerMonths);
-        this.initDropDown(spinner, spinnerMonths);
+        Spinner spinnerYears = (Spinner) findViewById(R.id.spinnerYears);
+        this.initDropDown(spinner, spinnerMonths, spinnerYears);
     }
 
-    private void initDropDown(Spinner days, Spinner months) {
+    private void initDropDown(Spinner days, Spinner months, Spinner years) {
         // days
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.days, android.R.layout.simple_spinner_item);
@@ -29,5 +30,11 @@ public class Register extends AppCompatActivity {
                 R.array.months, android.R.layout.simple_spinner_item);
         adapterMonths.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         months.setAdapter(adapterMonths);
+
+        // years
+        ArrayAdapter<CharSequence> adapterYears = ArrayAdapter.createFromResource(this,
+                R.array.years, android.R.layout.simple_spinner_item);
+        adapterYears.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        years.setAdapter(adapterYears);
     }
 }
