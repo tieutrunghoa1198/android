@@ -1,10 +1,7 @@
 package com.example.shoeapp.login;
 
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.shoeapp.R;
@@ -20,6 +17,8 @@ import java.util.List;
 public class Register extends AppCompatActivity {
     Button btnRegister;
     TextView tvResult;
+    EditText etUsername;
+    EditText etPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,50 +26,64 @@ public class Register extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinnerDays);
         Spinner spinnerMonths = (Spinner) findViewById(R.id.spinnerMonths);
         Spinner spinnerYears = (Spinner) findViewById(R.id.spinnerYears);
+
         this.tvResult = findViewById(R.id.tvTestConnect);
         this.btnRegister = findViewById(R.id.btnRegister);
-        this.btnRegisterHandler(btnRegister, tvResult);
+        this.etUsername = findViewById(R.id.etEmail);
+        this.etPassword = findViewById(R.id.etPassword);
+
+        this.btnRegisterHandler(btnRegister, etUsername, etPassword);
         this.initDropDown(spinner, spinnerMonths, spinnerYears);
     }
 
-    private void btnRegisterHandler(Button btn, TextView tvResult){
+    /*
+    * =============== INTERACTING FUNCTIONS ===============
+    *
+    * */
+
+    private void btnRegisterHandler(Button btn, EditText etUsername, EditText etPassword){
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://linken.tranduydat.com/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-                LogInService service = retrofit.create(LogInService.class);
-                /*
-                *                                                   @param id
-                *
-                * */
-                Call<List<ProductDAO>> call = service.getOneProduct("1");
-                call.enqueue(new Callback<List<ProductDAO>>() {
-                    @Override
-                    public void onResponse(Call<List<ProductDAO>> call, Response<List<ProductDAO>> response) {
-                        if(!response.isSuccessful()) {
-                            System.out.println(response.code());
-                            return;
-                        }
-
-                        List<ProductDAO> listProduct = response.body();
-                        for (ProductDAO product : listProduct) {
-                            System.out.println(product.getImage());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<ProductDAO>> call, Throwable t) {
-                        tvResult.setText(t.getMessage());
-                        System.out.println("fail");
-                    }
-                });
+                System.out.println("Username: " + etUsername);
+                System.out.println("Password: " + etPassword);
             }
         });
     }
+
+//    private void createRequestProduct() {
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("https://linken.tranduydat.com/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//
+//        LogInService service = retrofit.create(LogInService.class);
+//        /*
+//         * @param id
+//         *
+//         * */
+//        Call<List<ProductDAO>> call = service.getOneProduct("1");
+//        call.enqueue(new Callback<List<ProductDAO>>() {
+//            @Override
+//            public void onResponse(Call<List<ProductDAO>> call, Response<List<ProductDAO>> response) {
+//                if(!response.isSuccessful()) {
+//                    System.out.println(response.code());
+//                    return;
+//                }
+//
+//                List<ProductDAO> listProduct = response.body();
+//                for (ProductDAO product : listProduct) {
+//                    System.out.println(product.getImage());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<ProductDAO>> call, Throwable t) {
+//                tvResult.setText(t.getMessage());
+//                System.out.println("fail");
+//            }
+//        });
+//    }
 
     private void initDropDown(Spinner days, Spinner months, Spinner years) {
         // days

@@ -16,20 +16,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.shoeapp.R;
 import com.example.shoeapp.login.Register;
+import com.example.shoeapp.login.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     TextView tvRegister;
     Button btnSignIn;
+    private List<User> listUsers = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.listUsers.add(new User("tieuhoa", "tieuhoa"));
+        this.listUsers.add(new User("tieuhoa2", "tieuhoa"));
+        this.listUsers.add(new User("tieuhoa3", "tieuhoa"));
+        this.listUsers.add(new User("tieuhoa4", "tieuhoa"));
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         this.btnSignIn = findViewById(R.id.btnSignIn);
         tvRegister = findViewById(R.id.tvRegister);
 
+        /*
+         * =============== START OF INTERACTING FUNCTIONS ===============
+         *
+         * */
 
         this.btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("vao day nhe");
             }
         });
+
+        /*
+         * =============== END OF INTERACTING FUNCTIONS ===============
+         *
+         * */
     }
 }
 
