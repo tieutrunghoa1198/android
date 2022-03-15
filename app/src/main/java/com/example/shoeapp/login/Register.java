@@ -4,17 +4,22 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.shoeapp.R;
+import com.example.shoeapp.login.model.ProductDAO;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.List;
 
 public class Register extends AppCompatActivity {
     Button btnRegister;
+    TextView tvResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,22 +27,47 @@ public class Register extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinnerDays);
         Spinner spinnerMonths = (Spinner) findViewById(R.id.spinnerMonths);
         Spinner spinnerYears = (Spinner) findViewById(R.id.spinnerYears);
-
-        this.btnRegister = findViewById(R.id.btnRegister);this.btnRegisterHandler(btnRegister);
-        this.btnRegisterHandler(btnRegister);
+        this.tvResult = findViewById(R.id.tvTestConnect);
+        this.btnRegister = findViewById(R.id.btnRegister);
+        this.btnRegisterHandler(btnRegister, tvResult);
         this.initDropDown(spinner, spinnerMonths, spinnerYears);
     }
 
-    private void btnRegisterHandler(Button btn){
+    private void btnRegisterHandler(Button btn, TextView tvResult){
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    URL url = new URL("https://linken.tranduydat.com/prm/api/v1.0/product/images/?product_id=1");
-                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://linken.tranduydat.com/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                LogInService service = retrofit.create(LogInService.class);
+                /*
+                *                                                   @param id
+                *
+                * */
+                Call<List<ProductDAO>> call = service.getOneProduct("1");
+                call.enqueue(new Callback<List<ProductDAO>>() {
+                    @Override
+                    public void onResponse(Call<List<ProductDAO>> call, Response<List<ProductDAO>> response) {
+                        if(!response.isSuccessful()) {
+                            System.out.println(response.code());
+                            return;
+                        }
+
+                        List<ProductDAO> listProduct = response.body();
+                        for (ProductDAO product : listProduct) {
+                            System.out.println(product.getImage());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<ProductDAO>> call, Throwable t) {
+                        tvResult.setText(t.getMessage());
+                        System.out.println("fail");
+                    }
+                });
             }
         });
     }
