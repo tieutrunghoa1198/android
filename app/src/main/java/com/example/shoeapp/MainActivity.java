@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.shoeapp.R;
+import com.example.shoeapp.listproduct.ListProduct;
 import com.example.shoeapp.login.Register;
 import com.example.shoeapp.login.model.User;
 
@@ -63,14 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
                 boolean isUsernameEmpty = etUsername.getText().toString().isEmpty();
                 boolean isPassEmpty = etPassword.getText().toString().isEmpty();
+
                 if (isUsernameEmpty && isPassEmpty) {
                     System.out.println("empty");
                     Toast.makeText(getApplicationContext(), "Please enter username and password, then try again!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                login(username, password, listUsers);
                 if (login(username, password, listUsers)) {
-                    Intent intent = new Intent(MainActivity.this, Register.class);
+                    Intent intent = new Intent(MainActivity.this, ListProduct.class);
                     startActivity(intent);
                     System.out.println("vao day nhe");
                 } else {
